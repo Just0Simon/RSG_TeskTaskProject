@@ -1,6 +1,16 @@
-﻿namespace Content.Features.StorageModule.Scripts {
+﻿using Content.Features.InventoryModule.Scripts;
+
+namespace Content.Features.StorageModule.Scripts {
     public class StorageFactory : IStorageFactory {
+        private readonly IInventoryModel _inventoryModel;
+
+        public StorageFactory(IInventoryModel inventoryModel)
+        {
+            _inventoryModel = inventoryModel;
+
+        }
+        
         public IStorage GetStorage() =>
-            new StandardStorage();
+            new StandardStorage(_inventoryModel);
     }
 }

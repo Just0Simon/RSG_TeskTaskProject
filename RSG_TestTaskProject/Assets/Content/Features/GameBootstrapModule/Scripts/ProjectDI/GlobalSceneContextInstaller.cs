@@ -2,6 +2,7 @@ using Content.Features.AIModule.Scripts.Entity;
 using Content.Features.StorageModule.Scripts;
 using Content.Features.CameraModule;
 using Content.Features.InteractionModule;
+using Content.Features.InventoryModule.Scripts;
 using Content.Features.LootModule.Scripts;
 using Content.Features.PlayerData.Scripts;
 using Content.Features.PrefabSpawner;
@@ -16,6 +17,7 @@ namespace Content.Features.GameBootstrapModule.Scripts.ProjectDI {
             PrefabSpawnerInstaller.Install(Container);
             PlayerDataInstaller.Install(Container);
             CameraInstaller.Install(Container);
+            InventoryModuleInstaller.Install(Container);
             StorageModuleInstaller.Install(Container);
             InteractionSystemInstaller.Install(Container);
             AIInstaller.Install(Container);
