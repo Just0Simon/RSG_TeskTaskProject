@@ -17,7 +17,5 @@ namespace Content.Features.InventoryModule.Scripts
         void RemoveItem(Item item);
         
         bool ContainsItem(Item item);
-        
-        void ClearItems();
     }
 }

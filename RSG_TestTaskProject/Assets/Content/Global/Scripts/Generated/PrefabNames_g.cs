@@ -6,5 +6,7 @@ namespace Global.Scripts.Generated {
         public const System.String Book = "Book"; 
         public const System.String PlayerCamera = "PlayerCamera"; 
         public const System.String Seller = "Seller"; 
+        public const System.String GameUserInterfaceService = "GameUserInterfaceService"; 
+        public const System.String InventoryView = "InventoryView"; 
     } 
 } 

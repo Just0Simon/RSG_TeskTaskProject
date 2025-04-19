@@ -30,10 +30,5 @@ namespace Content.Features.InventoryModule.Scripts
         {
             return _items.Contains(item);
         }
-
-        public void ClearItems()
-        {
-            _items.Clear();
-        }
     }
 }
