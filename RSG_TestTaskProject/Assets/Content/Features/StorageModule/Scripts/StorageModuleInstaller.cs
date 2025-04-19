@@ -9,13 +9,18 @@ namespace Content.Features.StorageModule.Scripts {
             Container.Bind<ItemsConfiguration>()
                 .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<ItemsConfiguration>(Address.Configurations.ItemsConfiguration_Default))
                 .AsSingle();
-
+            
+            Container.Bind<WeightStorageConfiguration>()
+                .FromScriptableObject(
+                    addressablesAssetLoaderService.LoadAsset<WeightStorageConfiguration>(Address.Configurations.WeightStorageConfiguration_Default))
+                .AsSingle();
+            
             Container.Bind<IItemFactory>()
                 .To<ItemFactory>()
                 .AsSingle();
         
             Container.Bind<IStorageFactory>()
-                .To<StorageFactory>()
+                .To<WeightStorageFactory>()
                 .AsSingle();
         }
     }

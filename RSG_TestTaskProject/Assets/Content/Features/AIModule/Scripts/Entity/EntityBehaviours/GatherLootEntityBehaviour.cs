@@ -42,8 +42,12 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
             Vector3.Distance(_entityContext.EntityDamageable.Position, _loot.transform.position) <= _entityContext.EntityData.InteractDistance;
 
         private void CollectLoot() {
-            _lootService.CollectLoot(_loot, _entityContext.Storage);
-            _loot.DestroyLoot();
+            bool canCollectLoot = _lootService.CanCollectLoot(_loot, _entityContext.Storage);
+            if(canCollectLoot)
+            {
+                _lootService.CollectLoot(_loot, _entityContext.Storage);
+                _loot.DestroyLoot();
+            }
             StopMoving();
             OnBehaviorEnd?.Invoke();
         }

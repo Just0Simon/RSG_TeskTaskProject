@@ -2,24 +2,39 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Content.Features.StorageModule.Scripts {
-    public class StandardStorage : IStorage {
+namespace Content.Features.StorageModule.Scripts
+{
+    public class WeightStorage : IWeightStorage
+    {
         private List<Item> _items = new List<Item>();
 
         public event Action<Item> OnItemAdded;
         public event Action<Item> OnItemRemoved;
+        public event Action<WeightChangedEventArgs> OnWeightChanged;
+        
+        public float CurrentWeight { get; private set; }
+        public float MaxWeight { get; private set; }
 
+        public WeightStorage(float maxWeight)
+        {
+            MaxWeight = maxWeight;
+        }
+        
         public List<Item> GetAllItems() =>
             _items.ToList();
 
         public bool CanAddItem(Item item)
         {
-            return true;
+            var tempWeight = CurrentWeight + item.Weight;
+            return MaxWeight >= tempWeight;
         }
 
         public bool CanAddItems(List<Item> items)
         {
-            return true;
+            var itemsWeightSum = items.Sum(x => x.Weight);
+            var tempWeight = CurrentWeight + itemsWeightSum;
+
+            return MaxWeight >= tempWeight;
         }
         
         public void AddItem(Item item) {
@@ -27,7 +42,9 @@ namespace Content.Features.StorageModule.Scripts {
                 return;
         
             _items.Add(item);
+            CurrentWeight += item.Weight;
             OnItemAdded?.Invoke(item);
+            InvokeWeightChangedEvent();
         }
 
         public void AddItems(List<Item> items) {
@@ -40,7 +57,9 @@ namespace Content.Features.StorageModule.Scripts {
                 return;
 
             _items.Remove(item);
+            CurrentWeight += item.Weight;
             OnItemRemoved?.Invoke(item);
+            InvokeWeightChangedEvent();
         }
 
         public void RemoveItems(List<Item> items) {
@@ -51,6 +70,11 @@ namespace Content.Features.StorageModule.Scripts {
         public void RemoveAllItems() {
             foreach (Item item in _items)
                 RemoveItem(item);
+        }
+
+        private void InvokeWeightChangedEvent()
+        {
+            OnWeightChanged?.Invoke(new WeightChangedEventArgs() { CurrentWeight = CurrentWeight, MaxWeight = MaxWeight });
         }
     }
 }
