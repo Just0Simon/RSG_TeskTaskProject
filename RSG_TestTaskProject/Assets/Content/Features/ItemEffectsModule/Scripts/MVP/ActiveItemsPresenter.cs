@@ -1,0 +1,118 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Content.Features.InventoryModule.Scripts;
+using Content.Features.ItemEffectsModule.Scripts.Input;
+using Content.Features.StorageModule.Scripts;
+
+namespace Content.Features.ItemEffectsModule.Scripts
+{
+    public class ActiveItemsPresenter : IDisposable
+    {
+        private const int MAX_ACTIVE_ITEMS = 9;
+        
+        private readonly IInventoryModel _inventoryModel;
+        private readonly IActiveItemsView _activeItemsView;
+        private readonly IActiveItemsInputListener _activeItemsInputListener;
+        private readonly EffectApplicator _effectApplicator;
+
+        private readonly Dictionary<int, Item> _activeItemsMap = new Dictionary<int, Item>();
+        
+        public ActiveItemsPresenter(IInventoryModel inventoryModel, IActiveItemsView activeItemsView, IActiveItemsInputListener activeItemsInputListener, EffectApplicator effectApplicator)
+        {
+            _inventoryModel = inventoryModel;
+            _activeItemsView = activeItemsView;
+            _activeItemsInputListener = activeItemsInputListener;
+            _effectApplicator = effectApplicator;
+
+            _inventoryModel.ItemAdded += OnItemAddedToStorage;
+            _inventoryModel.ItemRemoved += OnItemRemovedFromStorage;
+            
+            _activeItemsInputListener.OnActiveItemNumberPressed += OnActiveItemNumberPressed;
+            _activeItemsView.OnActiveItemClicked += OnActiveItemNumberPressed;
+            
+            _activeItemsView.Setup(MAX_ACTIVE_ITEMS);
+            
+            InitializeInventoryItems();
+        }
+
+        private void OnActiveItemNumberPressed(int activeItemNumber)
+        {
+            ActiveAndRemoveItem(activeItemNumber);
+        }
+
+        private void InitializeInventoryItems()
+        {
+            foreach (var item in _inventoryModel.Items)
+            {
+                OnItemAddedToStorage(item);
+            }
+        }
+
+        private void ActiveAndRemoveItem(int activeItemNumber)
+        {
+            if (_activeItemsMap.TryGetValue(activeItemNumber, out var item))
+            {
+                _effectApplicator.ApplyEffectOfType(item.EffectType, out bool consumeItem);
+                if(consumeItem)
+                    _inventoryModel.RemoveItem(item);
+            }
+        }
+        
+        private void AddNewActiveItem(Item item)
+        {
+            var newActiveItemNumber = _activeItemsMap.Count + 1;
+            _activeItemsMap.Add(newActiveItemNumber, item);
+            _activeItemsView.SetActiveItem(newActiveItemNumber, item.Icon);
+        }
+
+        private void RemoveActiveItem(Item item)
+        {
+            if (_activeItemsMap.ContainsValue(item))
+            {
+                var key = _activeItemsMap.First(x => x.Value == item).Key;
+                _activeItemsView.RemoveActiveItem(key);
+                _activeItemsMap.Remove(key);
+            }
+        }
+
+        private void MoveItemsToTheLeft()
+        {
+            if (_activeItemsMap.Any(x => x.Key > MAX_ACTIVE_ITEMS))
+                return;
+
+            var numberItemPair = _activeItemsMap.First(x => x.Key > MAX_ACTIVE_ITEMS);
+            _activeItemsMap.Remove(numberItemPair.Key);
+
+            for (int i = 1; i <= MAX_ACTIVE_ITEMS; i++)
+            {
+                if(_activeItemsMap.ContainsKey(i))
+                    continue;
+                
+                _activeItemsMap[i] = numberItemPair.Value;
+                _activeItemsView.SetActiveItem(i, numberItemPair.Value.Icon);
+                return;
+            }
+        }
+        
+        private void OnItemAddedToStorage(Item item)
+        {
+            AddNewActiveItem(item);
+        }
+
+        private void OnItemRemovedFromStorage(Item item)
+        {
+            RemoveActiveItem(item);
+            MoveItemsToTheLeft();
+        }
+
+        public void Dispose()
+        {
+            _inventoryModel.ItemAdded -= OnItemAddedToStorage;
+            _inventoryModel.ItemRemoved -= OnItemRemovedFromStorage;
+            
+            _activeItemsInputListener.OnActiveItemNumberPressed -= OnActiveItemNumberPressed;
+            _activeItemsView.OnActiveItemClicked -= OnActiveItemNumberPressed;
+        }
+    }
+}

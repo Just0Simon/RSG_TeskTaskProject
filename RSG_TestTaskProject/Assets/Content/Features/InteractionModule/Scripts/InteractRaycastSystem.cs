@@ -2,6 +2,7 @@
 using Content.Features.AIModule.Scripts.Entity;
 using Content.Features.AIModule.Scripts.Entity.EntityBehaviours;
 using Content.Features.CameraModule;
+using Content.Global.Scripts.UI;
 using Core.InputModule;
 using UnityEngine;
 using Zenject;
@@ -35,6 +36,9 @@ namespace Content.Features.InteractionModule {
 
         private void HandleRaycast(Vector2 mousePosition) {
             if (_playerCameraModel.CurrentCamera is null)
+                return;
+            
+            if(UIUtility.IsPointerOverUI())
                 return;
             
             Ray ray = _playerCameraModel.CurrentCamera.ScreenPointToRay(mousePosition);

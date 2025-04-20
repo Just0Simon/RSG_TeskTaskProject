@@ -9,7 +9,7 @@ namespace Content.Global.Scripts.UI
         {
             if (EventSystem.current == null)
                 return false;
-
+            
 #if ENABLE_INPUT_SYSTEM
             return EventSystem.current.IsPointerOverGameObject(Mouse.current.deviceId);
 #else

@@ -13,5 +13,10 @@ namespace Content.Features.StorageModule.Scripts {
             ItemConfiguration itemConfiguration = _configurations.FirstOrDefault(map => map.ItemType == itemType);
             return itemConfiguration ?? _defaultVisual;
         }
+
+        public ItemType GetItemTypeByItemName(string itemName)
+        {
+            return _configurations.First(x => x.Name == itemName).ItemType;
+        }
     }
 }

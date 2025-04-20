@@ -1,6 +1,6 @@
 ﻿using System;
+using Content.Features.ItemEffectsModule.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Content.Features.StorageModule.Scripts {
     [Serializable]
@@ -10,5 +10,6 @@ namespace Content.Features.StorageModule.Scripts {
         public Sprite Icon;
         public int Price;
         public float Weight;
+        public EffectType EffectType;
     }
 }

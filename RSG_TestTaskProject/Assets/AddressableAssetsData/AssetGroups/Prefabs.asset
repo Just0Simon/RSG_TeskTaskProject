@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a7c85dd8ccd2c4438358f368e700609
+    m_Address: HealPotionsView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 87edaa8f20903734c8c21f7bf0563569
     m_Address: Standard_Enemy
     m_ReadOnly: 0
@@ -50,8 +55,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a99ceda7c8d84d6488cb6a2848b4cb37
+    m_Address: ActiveItemsView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2116e2d8ec6e3f4fada49c9b418c674
     m_Address: PlayerCamera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec740cca1380b604593506078584f34c
+    m_Address: EventSystem
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

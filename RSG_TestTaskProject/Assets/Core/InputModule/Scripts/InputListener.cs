@@ -34,9 +34,6 @@ namespace Core.InputModule {
 
         public void OnInteraction(InputAction.CallbackContext context)
         {
-            if (UIUtility.IsPointerOverUI())
-                return;
-            
             if (context.performed)
                 OnInteractionPerformed?.Invoke(Mouse.current.position.ReadValue());
 
