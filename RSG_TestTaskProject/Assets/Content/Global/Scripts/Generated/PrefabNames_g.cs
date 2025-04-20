@@ -8,5 +8,6 @@ namespace Global.Scripts.Generated {
         public const System.String InventoryView = "InventoryView"; 
         public const System.String PlayerCamera = "PlayerCamera"; 
         public const System.String Seller = "Seller"; 
+        public const System.String PlayerBalanceView = "PlayerBalanceView"; 
     } 
 } 
