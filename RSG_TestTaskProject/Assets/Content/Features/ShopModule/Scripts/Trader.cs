@@ -4,7 +4,11 @@ using Content.Features.StorageModule.Scripts;
 using UnityEngine;
 
 namespace Content.Features.ShopModule.Scripts {
-    public class Trader : MonoBehaviour {
+    public class Trader : MonoBehaviour
+    {
+        [field: SerializeField]
+        public List<ItemType> BlackListItemTypes { get; private set;} = new List<ItemType>();
+        
         public int SellAllItemsFromStorage(IStorage storage) {
             int sumOfMoney = 0;
             foreach (int price in storage.GetAllItems().Select(item => item.Price))
@@ -20,7 +24,7 @@ namespace Content.Features.ShopModule.Scripts {
 
             return item.Price;
         }
-
+        
         public int SellItemsFromStorage(List<Item> items, IStorage storage) {
             storage.RemoveItems(items);
 

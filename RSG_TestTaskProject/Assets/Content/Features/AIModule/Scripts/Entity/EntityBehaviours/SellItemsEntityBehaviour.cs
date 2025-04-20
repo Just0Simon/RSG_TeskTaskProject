@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Content.Features.PlayerBalanceModule.Scripts;
 using Content.Features.ShopModule.Scripts;
+using Content.Features.StorageModule.Scripts;
 using UnityEngine;
 
 namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
@@ -43,9 +45,10 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
         private bool IsNearTheTarget() =>
             Vector3.Distance(_entityContext.EntityDamageable.Position, _trader.transform.position) <= _entityContext.EntityData.InteractDistance;
 
-        private void SellItems() {
-            int soldItemsTotalCost = _trader.SellAllItemsFromStorage(_entityContext.Storage);
-
+        private void SellItems()
+        {
+            var itemsToSell = _entityContext.Storage.GetAllItems().Where(x => _trader.BlackListItemTypes.Contains(x.ItemType) is false).ToList();
+            int soldItemsTotalCost = _trader.SellItemsFromStorage(itemsToSell, _entityContext.Storage);
             if (soldItemsTotalCost > 0)
             {
                 _playerBalanceService.Add(soldItemsTotalCost);
