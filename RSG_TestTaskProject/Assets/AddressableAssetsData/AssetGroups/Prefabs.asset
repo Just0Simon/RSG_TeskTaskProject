@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_GUID: a002e2762f457b6429e0da2b7b348364
   m_SerializeEntries:
+  - m_GUID: 485d426b0b1f34b4497307d34b523111
+    m_Address: HealthBarView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 572e3e85a587c984fbd838af01028e49
     m_Address: Player
     m_ReadOnly: 0

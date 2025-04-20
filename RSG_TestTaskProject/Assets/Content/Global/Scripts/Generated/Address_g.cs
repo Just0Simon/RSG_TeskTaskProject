@@ -12,6 +12,7 @@ namespace Global.Scripts.Generated {
             "GlobalScene",
             "SurfaceScene",
             "DungeonScene",
+            "HealthBarView",
             "Player",
             "Potion",
             "Standard_Enemy",
@@ -49,6 +50,7 @@ namespace Global.Scripts.Generated {
         } 
 
         public static class Prefabs { 
+            public const System.String HealthBarView = "HealthBarView"; 
             public const System.String Player = "Player"; 
             public const System.String Potion = "Potion"; 
             public const System.String Standard_Enemy = "Standard_Enemy"; 
@@ -57,6 +59,7 @@ namespace Global.Scripts.Generated {
             public const System.String PlayerCamera = "PlayerCamera"; 
             public const System.String Seller = "Seller"; 
             public static List<string> AllKeys = new() {
+                "HealthBarView",
                 "Player",
                 "Potion",
                 "Standard_Enemy",
