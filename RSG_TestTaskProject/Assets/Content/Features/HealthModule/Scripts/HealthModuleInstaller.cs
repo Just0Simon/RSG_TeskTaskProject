@@ -23,9 +23,10 @@ namespace Content.Features.HealthModule.Scripts
             var playerData = entityDataService.GetEntityData(EntityType.Player);
             float playerStartHealth = playerData.StartHealth;
 
-            Container.BindInterfacesTo<EntityHealthModel>()
+            Container.Bind<IHealthModel>()
+                .WithId(HealthConstants.PLAYER_HEALTH_KEY)
+                .To<EntityHealthModel>()
                 .AsSingle()
-                .WithConcreteId(HealthConstants.PLAYER_HEALTH_KEY)
                 .WithArguments(playerStartHealth)
                 .NonLazy();
         }

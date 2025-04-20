@@ -5,18 +5,18 @@ namespace Content.Features.HealthModule.Scripts
 {
     public class HealthBarPresenter : IDisposable
     {
-        private readonly IHealthState _modelState;
+        private readonly IHealthModel _model;
         private readonly IHealthBarView _view;
 
         public HealthBarPresenter(
-            [Inject(Id = HealthConstants.PLAYER_HEALTH_KEY)] IHealthState modelState, 
+            [Inject(Id = HealthConstants.PLAYER_HEALTH_KEY)] IHealthModel model, 
             IHealthBarView view)
         {
-            _modelState = modelState;
+            _model = model;
             _view = view;
 
-            _modelState.OnHealthChanged += OnPlayerHealthChanged;
-            _view.UpdateHealthBar(_modelState.Health, _modelState.MaxHealth);
+            _model.OnHealthChanged += OnPlayerHealthChanged;
+            _view.UpdateHealthBar(_model.Health, _model.MaxHealth);
         }
 
         private void OnPlayerHealthChanged(HealthChangedEventArgs args)
@@ -26,7 +26,7 @@ namespace Content.Features.HealthModule.Scripts
         
         public void Dispose()
         {
-            _modelState.OnHealthChanged -= OnPlayerHealthChanged;
+            _model.OnHealthChanged -= OnPlayerHealthChanged;
         }
     }
 }
