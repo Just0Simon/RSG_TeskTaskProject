@@ -1,4 +1,5 @@
 ﻿using System;
+using Content.Global.Scripts.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -31,7 +32,11 @@ namespace Core.InputModule {
             _interactionAction.canceled -= OnInteraction;
         }
 
-        public void OnInteraction(InputAction.CallbackContext context) {
+        public void OnInteraction(InputAction.CallbackContext context)
+        {
+            if (UIUtility.IsPointerOverUI())
+                return;
+            
             if (context.performed)
                 OnInteractionPerformed?.Invoke(Mouse.current.position.ReadValue());
 
