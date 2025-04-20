@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
     public class GatherLootEntityBehaviour : IEntityBehaviour {
         private EntityContext _entityContext;
-        private Loot _loot;
+        private ILoot _loot;
         private ILootService _lootService;
 
         public event Action OnBehaviorEnd;
@@ -16,7 +16,7 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
         public void InitContext(EntityContext entityContext) =>
             _entityContext = entityContext;
 
-        public void SetLoot(Loot loot) =>
+        public void SetLoot(ILoot loot) =>
             _loot = loot;
 
         public void Start() {
@@ -33,13 +33,13 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
         public void Stop() { }
 
         private void MoveToTarget() =>
-            _entityContext.NavMeshAgent.SetDestination(_loot.transform.position);
+            _entityContext.NavMeshAgent.SetDestination(_loot.Position);
 
         private void StopMoving() =>
             _entityContext.NavMeshAgent.ResetPath();
 
         private bool IsNearTheTarget() =>
-            Vector3.Distance(_entityContext.EntityDamageable.Position, _loot.transform.position) <= _entityContext.EntityData.InteractDistance;
+            Vector3.Distance(_entityContext.EntityDamageable.Position, _loot.Position) <= _entityContext.EntityData.InteractDistance;
 
         private void CollectLoot() {
             bool canCollectLoot = _lootService.CanCollectLoot(_loot, _entityContext.Storage);

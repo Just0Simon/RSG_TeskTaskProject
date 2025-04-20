@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace Content.Features.LootModule.Scripts {
-    public class LootSpawner : MonoBehaviour {
+    public class LootSpawner : AbstractMonoLootSpawner
+    {
         [SerializeField] private List<Loot> _lootToSpawn;
         private DiContainer _diContainer;
 
@@ -13,7 +12,7 @@ namespace Content.Features.LootModule.Scripts {
         public void InjectDependencies(DiContainer diContainer) =>
             _diContainer = diContainer;
 
-        public void SpawnLoot() {
+        public override void SpawnLoot() {
             foreach (Loot loot in _lootToSpawn)
                 _diContainer.InstantiatePrefab(loot.gameObject, transform.position, Quaternion.identity, null);
         }

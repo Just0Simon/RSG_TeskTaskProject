@@ -75,25 +75,6 @@ namespace Content.Features.ItemEffectsModule.Scripts
                 _activeItemsMap.Remove(key);
             }
         }
-
-        private void MoveItemsToTheLeft()
-        {
-            if (_activeItemsMap.Any(x => x.Key > MAX_ACTIVE_ITEMS))
-                return;
-
-            var numberItemPair = _activeItemsMap.First(x => x.Key > MAX_ACTIVE_ITEMS);
-            _activeItemsMap.Remove(numberItemPair.Key);
-
-            for (int i = 1; i <= MAX_ACTIVE_ITEMS; i++)
-            {
-                if(_activeItemsMap.ContainsKey(i))
-                    continue;
-                
-                _activeItemsMap[i] = numberItemPair.Value;
-                _activeItemsView.SetActiveItem(i, numberItemPair.Value.Icon);
-                return;
-            }
-        }
         
         private void OnItemAddedToStorage(Item item)
         {
@@ -103,7 +84,6 @@ namespace Content.Features.ItemEffectsModule.Scripts
         private void OnItemRemovedFromStorage(Item item)
         {
             RemoveActiveItem(item);
-            MoveItemsToTheLeft();
         }
 
         public void Dispose()

@@ -2,7 +2,7 @@
 
 namespace Content.Features.LootModule.Scripts {
     public interface ILootService {
-        bool CanCollectLoot(Loot loot, IStorage storage);
-        void CollectLoot(Loot loot, IStorage storage);
+        bool CanCollectLoot(ILoot loot, IStorage storage);
+        void CollectLoot(ILoot loot, IStorage storage);
     }
 }

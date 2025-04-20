@@ -7,7 +7,7 @@ namespace Content.Features.LootModule.Scripts {
         public LootService(IItemFactory itemFactory) =>
             _itemFactory = itemFactory;
 
-        public bool CanCollectLoot(Loot loot, IStorage storage)
+        public bool CanCollectLoot(ILoot loot, IStorage storage)
         {
             foreach (ItemType itemType in loot.GetItemsInLoot())
             {
@@ -20,7 +20,7 @@ namespace Content.Features.LootModule.Scripts {
             return true;
         }
 
-        public void CollectLoot(Loot loot, IStorage storage) {
+        public void CollectLoot(ILoot loot, IStorage storage) {
             foreach (ItemType itemType in loot.GetItemsInLoot())
             {
                 storage.AddItem(_itemFactory.GetItem(itemType));
