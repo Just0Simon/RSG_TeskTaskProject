@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Content.Features.StorageModule.Scripts
 {
-    public class WeightStorage : IWeightStorage
+    public class WeightStorage : IWeightStorage, IDisposable
     {
         private readonly IInventoryModel _inventoryModel;
         
@@ -20,8 +20,12 @@ namespace Content.Features.StorageModule.Scripts
         public WeightStorage(IInventoryModel inventoryModel, float maxWeight)
         {
             _inventoryModel = inventoryModel;
-            LoadItemsWeights();
             MaxWeight = maxWeight;
+            
+            RecalculateCurrentWeight();
+            
+            _inventoryModel.ItemAdded += OnItemAddedOrRemoved;
+            _inventoryModel.ItemRemoved += OnItemAddedOrRemoved;
         }
         
         public List<Item> GetAllItems() =>
@@ -46,9 +50,7 @@ namespace Content.Features.StorageModule.Scripts
                 return;
         
             _inventoryModel.AddItem(item);
-            CurrentWeight += item.Weight;
             OnItemAdded?.Invoke(item);
-            InvokeWeightChangedEvent();
         }
 
         public void AddItems(List<Item> items) {
@@ -61,9 +63,7 @@ namespace Content.Features.StorageModule.Scripts
                 return;
 
             _inventoryModel.RemoveItem(item);
-            CurrentWeight -= item.Weight;
             OnItemRemoved?.Invoke(item);
-            InvokeWeightChangedEvent();
         }
 
         public void RemoveItems(List<Item> items) {
@@ -78,10 +78,6 @@ namespace Content.Features.StorageModule.Scripts
             {
                 RemoveItem(items[i]);
             }
-            
-            /*
-            foreach (Item item in _inventoryModel.Items)
-                RemoveItem(item);*/
         }
         
         private void InvokeWeightChangedEvent()
@@ -90,9 +86,21 @@ namespace Content.Features.StorageModule.Scripts
             Debug.Log($"Weight changed to {CurrentWeight}");
         }
 
-        private void LoadItemsWeights()
+        private void RecalculateCurrentWeight()
         {
             CurrentWeight = _inventoryModel.Items.Sum(x => x.Weight);
+            InvokeWeightChangedEvent();
+        }
+
+        private void OnItemAddedOrRemoved(Item _)
+        {
+            RecalculateCurrentWeight();
+        }
+        
+        public void Dispose()
+        {
+            _inventoryModel.ItemAdded -= OnItemAddedOrRemoved;
+            _inventoryModel.ItemRemoved -= OnItemAddedOrRemoved;
         }
     }
 }
