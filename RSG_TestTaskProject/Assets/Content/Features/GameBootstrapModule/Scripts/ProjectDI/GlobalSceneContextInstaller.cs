@@ -5,6 +5,7 @@ using Content.Features.HealthModule.Scripts;
 using Content.Features.InteractionModule;
 using Content.Features.InventoryModule.Scripts;
 using Content.Features.LootModule.Scripts;
+using Content.Features.PlayerBalanceModule.Scripts;
 using Content.Features.PlayerData.Scripts;
 using Content.Features.PrefabSpawner;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace Content.Features.GameBootstrapModule.Scripts.ProjectDI {
             AIInstaller.Install(Container);
             LootInstaller.Install(Container);
             HealthModuleInstaller.Install(Container);
+            PlayerBalanceModuleInstaller.Install(Container);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Global.Scripts.Generated {
             "InventoryView",
             "PlayerCamera",
             "Seller",
+            "PlayerBalanceView",
         }; 
         public static class Configurations { 
             public const System.String InteractConfiguration = "InteractConfiguration"; 
@@ -58,6 +59,7 @@ namespace Global.Scripts.Generated {
             public const System.String InventoryView = "InventoryView"; 
             public const System.String PlayerCamera = "PlayerCamera"; 
             public const System.String Seller = "Seller"; 
+            public const System.String PlayerBalanceView = "Assets/Content/Features/PlayerBalanceModule/GameResources/Prefabs/PlayerBalanceView.prefab"; 
             public static List<string> AllKeys = new() {
                 "HealthBarView",
                 "Player",
@@ -67,6 +69,7 @@ namespace Global.Scripts.Generated {
                 "InventoryView",
                 "PlayerCamera",
                 "Seller",
+                "PlayerBalanceView",
             }; 
         } 
 

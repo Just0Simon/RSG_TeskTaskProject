@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 529b5a1dd4f30a448bd40065e6f17ac7
+    m_Address: Assets/Content/Features/PlayerBalanceModule/GameResources/Prefabs/PlayerBalanceView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 572e3e85a587c984fbd838af01028e49
     m_Address: Player
     m_ReadOnly: 0
