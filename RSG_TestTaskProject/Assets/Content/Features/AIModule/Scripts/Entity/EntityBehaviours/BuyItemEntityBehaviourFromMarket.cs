@@ -17,6 +17,8 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours
         
         public event Action OnBehaviorEnd;
 
+        private bool _haveBoughtItem;
+
         public BuyItemEntityBehaviourFromMarket(ITradeValidator tradeValidator, IItemBuyer itemBuyer, IPlayerBalanceService playerBalanceService)
         {
             _tradeValidator = tradeValidator;
@@ -60,18 +62,22 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours
 
         private void BuyItems()
         {
-            TryBuyItems();
+            TryBuyItem();
             
             StopMoving();
             OnBehaviorEnd?.Invoke();
         }
 
-        private void TryBuyItems()
+        private void TryBuyItem()
         {
+            if(_haveBoughtItem)
+                return;
+            
             if (_tradeValidator.CanBuyItem(_itemToBuy, _playerBalanceService) is false)
                 return;
             
             _itemBuyer.BuyItem(_itemToBuy, _entityContext.Storage, _playerBalanceService);
+            _haveBoughtItem = true;
         }
     }
 }

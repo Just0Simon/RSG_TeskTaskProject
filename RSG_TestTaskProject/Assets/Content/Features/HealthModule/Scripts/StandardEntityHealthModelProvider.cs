@@ -1,4 +1,5 @@
 ﻿using Content.Features.AIModule.Scripts.Entity;
+using Content.Global.Scripts.Injection;
 using Zenject;
 
 namespace Content.Features.HealthModule.Scripts
@@ -9,7 +10,7 @@ namespace Content.Features.HealthModule.Scripts
         private readonly IHealthModel _playerHealthModel;
 
         public StandardEntityHealthModelProvider(IEntityDataService entityDataService, 
-            [Inject(Id = HealthConstants.PLAYER_HEALTH_KEY)] IHealthModel entityHealthModel)
+            [Inject(Id = InjectIdConstants.PLAYER_ID)] IHealthModel entityHealthModel)
         {
             _playerHealthModel = entityHealthModel;
             _entityDataService = entityDataService;

@@ -1,4 +1,5 @@
 ﻿using System;
+using Content.Global.Scripts.Injection;
 using Zenject;
 
 namespace Content.Features.HealthModule.Scripts
@@ -9,7 +10,7 @@ namespace Content.Features.HealthModule.Scripts
         private readonly IHealthBarView _view;
 
         public HealthBarPresenter(
-            [Inject(Id = HealthConstants.PLAYER_HEALTH_KEY)] IHealthModel model, 
+            [Inject(Id = InjectIdConstants.PLAYER_ID)] IHealthModel model, 
             IHealthBarView view)
         {
             _model = model;

@@ -4,7 +4,7 @@ using Content.Features.StorageModule.Scripts;
 
 namespace Content.Features.InventoryModule.Scripts
 {
-    public class PlayerInventoryModel : IInventoryModel
+    public class InventoryModel : IInventoryModel
     {
         public event Action<Item> ItemAdded;
         public event Action<Item> ItemRemoved;

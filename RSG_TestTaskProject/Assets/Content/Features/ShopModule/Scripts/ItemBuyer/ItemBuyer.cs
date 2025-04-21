@@ -23,6 +23,7 @@ namespace Content.Features.ShopModule.Scripts
             var item = _itemFactory.GetItem(itemType);
 
             storage.AddItem(item);
+            playerBalanceService.Remove(item.BuyPrice);
             _logger.LogBuy(itemType, itemConfig.BuyPrice);
             return item;
         }

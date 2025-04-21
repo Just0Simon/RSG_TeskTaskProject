@@ -10,6 +10,7 @@ namespace Content.Features.ItemEffectsModule.Scripts
     public class ActiveItemsPresenter : IDisposable
     {
         private const int MAX_ACTIVE_ITEMS = 9;
+        private const ItemType ILLIGAL_ITEM_TYPE = ItemType.Potion;
         
         private readonly IInventoryModel _inventoryModel;
         private readonly IActiveItemsView _activeItemsView;
@@ -61,6 +62,9 @@ namespace Content.Features.ItemEffectsModule.Scripts
         
         private void AddNewActiveItem(Item item)
         {
+            if(item.ItemType == ILLIGAL_ITEM_TYPE)
+                return;
+            
             var newActiveItemNumber = _activeItemsMap.Count + 1;
             _activeItemsMap.Add(newActiveItemNumber, item);
             _activeItemsView.SetActiveItem(newActiveItemNumber, item.Icon);

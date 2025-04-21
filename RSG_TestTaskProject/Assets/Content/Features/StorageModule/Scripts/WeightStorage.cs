@@ -101,6 +101,7 @@ namespace Content.Features.StorageModule.Scripts
         {
             _inventoryModel.ItemAdded -= OnItemAddedOrRemoved;
             _inventoryModel.ItemRemoved -= OnItemAddedOrRemoved;
+            Debug.Log("Weight Storage Disposed");
         }
     }
 }

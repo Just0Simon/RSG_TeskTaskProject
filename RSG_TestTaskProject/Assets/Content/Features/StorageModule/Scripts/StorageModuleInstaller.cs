@@ -19,8 +19,8 @@ namespace Content.Features.StorageModule.Scripts {
                 .To<ItemFactory>()
                 .AsSingle();
         
-            Container.Bind<IStorageFactory>()
-                .To<WeightStorageFactory>()
+            Container.Bind<IEntityStorageFactory>()
+                .To<WeightEntityStorageFactory>()
                 .AsSingle();
         }
     }

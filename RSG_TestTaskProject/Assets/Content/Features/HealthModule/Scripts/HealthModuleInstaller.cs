@@ -1,4 +1,5 @@
 ﻿using Content.Features.AIModule.Scripts.Entity;
+using Content.Global.Scripts.Injection;
 using Core.AssetLoaderModule.Core.Scripts;
 using Global.Scripts.Generated;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace Content.Features.HealthModule.Scripts
             float playerStartHealth = playerData.StartHealth;
 
             Container.Bind<IHealthModel>()
-                .WithId(HealthConstants.PLAYER_HEALTH_KEY)
+                .WithId(InjectIdConstants.PLAYER_ID)
                 .To<EntityHealthModel>()
                 .AsSingle()
                 .WithArguments(playerStartHealth)

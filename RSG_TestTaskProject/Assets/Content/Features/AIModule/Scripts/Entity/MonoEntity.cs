@@ -13,15 +13,15 @@ namespace Content.Features.AIModule.Scripts.Entity {
         
         private IEntityBehaviour _currentBehaviour;
         private IEntityDataService _entityDataService;
-        private IStorageFactory _storageFactory;
+        private IEntityStorageFactory _entityStorageFactory;
         private IEntityBehaviourFactory _entityBehaviourFactory;
         private IEntityHealthModelProvider _healthModelProvider;
 
         [Inject]
-        public void InjectDependencies(IEntityDataService entityDataService, IStorageFactory storageFactory, IEntityBehaviourFactory entityBehaviourFactory, IEntityHealthModelProvider healthModelProvider) {
+        public void InjectDependencies(IEntityDataService entityDataService, IEntityStorageFactory entityStorageFactory, IEntityBehaviourFactory entityBehaviourFactory, IEntityHealthModelProvider healthModelProvider) {
             _healthModelProvider = healthModelProvider;
             _entityBehaviourFactory = entityBehaviourFactory;
-            _storageFactory = storageFactory;
+            _entityStorageFactory = entityStorageFactory;
             _entityDataService = entityDataService;
         }
 
@@ -30,7 +30,7 @@ namespace Content.Features.AIModule.Scripts.Entity {
             _entityContext.EntityDamageable = GetComponent<IDamageable>();
             _entityContext.EntityData = _entityDataService.GetEntityData(_entityType);
             _entityContext.EntityDamageable.BindHealthModel(_healthModelProvider.ProvideHealthForEntityType(_entityType));
-            _entityContext.Storage = _storageFactory.GetStorage();
+            _entityContext.Storage = _entityStorageFactory.GetStorage(_entityType);
             
             SetDefaultBehaviour();
         }

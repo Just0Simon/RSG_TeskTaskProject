@@ -1,13 +1,15 @@
 ﻿using Content.Features.StorageModule.Scripts;
+using Content.Global.Scripts.Injection;
+using Zenject;
 
 namespace Content.Features.InventoryModule.Scripts
 {
     public class InventoryPresenter
     {
-        private IInventoryModel _inventoryModel;
-        private IInventoryView _inventoryView;
+        private readonly IInventoryModel _inventoryModel;
+        private readonly IInventoryView _inventoryView;
 
-        public InventoryPresenter(IInventoryModel inventoryModel, IInventoryView inventoryView)
+        public InventoryPresenter([Inject(Id = InjectIdConstants.PLAYER_ID)] IInventoryModel inventoryModel, IInventoryView inventoryView)
         {
             _inventoryModel = inventoryModel;
             _inventoryView = inventoryView;

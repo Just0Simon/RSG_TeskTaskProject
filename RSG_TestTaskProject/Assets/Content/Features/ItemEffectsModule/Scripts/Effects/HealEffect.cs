@@ -1,4 +1,5 @@
 ﻿using Content.Features.HealthModule.Scripts;
+using Content.Global.Scripts.Injection;
 using Zenject;
 
 namespace Content.Features.ItemEffectsModule.Scripts
@@ -10,7 +11,7 @@ namespace Content.Features.ItemEffectsModule.Scripts
         private float _healAmount;
         
         public HealEffect(
-            [Inject(Id=HealthConstants.PLAYER_HEALTH_KEY)] IHealthModel healthModel)
+            [Inject(Id=InjectIdConstants.PLAYER_ID)] IHealthModel healthModel)
         {
             _healthModel = healthModel;
         }

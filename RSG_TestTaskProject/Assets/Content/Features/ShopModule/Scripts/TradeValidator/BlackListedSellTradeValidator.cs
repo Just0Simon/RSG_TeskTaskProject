@@ -9,12 +9,12 @@ namespace Content.Features.ShopModule.Scripts
     /// </summary>
     public class BlackListedSellTradeValidator : ITradeValidator
     {
-        private readonly List<ItemType> _blackListSellItemTypes;
+        private readonly BlackListItemsConfiguration _blackListItemsConfiguration;
         private readonly TradeValidator _tradeValidator;
 
-        public BlackListedSellTradeValidator(List<ItemType> blackListSellItemTypes, TradeValidator tradeValidator)
+        public BlackListedSellTradeValidator(BlackListItemsConfiguration blackListItemsConfiguration, TradeValidator tradeValidator)
         {
-            _blackListSellItemTypes = blackListSellItemTypes;
+            _blackListItemsConfiguration = blackListItemsConfiguration;
             _tradeValidator = tradeValidator;
         }
 
@@ -39,7 +39,7 @@ namespace Content.Features.ShopModule.Scripts
 
         private bool IsInBlackList(ItemType itemType)
         {
-            return _blackListSellItemTypes.Contains(itemType);
+            return _blackListItemsConfiguration.BlackListItems.Contains(itemType);
         }
     }
 }
