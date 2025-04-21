@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Content.Features.InventoryModule.Scripts;
 using Content.Features.ItemEffectsModule.Scripts.Input;
 using Content.Features.StorageModule.Scripts;
@@ -11,14 +10,17 @@ namespace Content.Features.ItemEffectsModule.Scripts
     {
         private readonly IActiveItemsInputListener _activeItemsInputListener;
         private readonly HealPotionsView _healPotionsView;
+        private readonly EffectApplicator _effectApplicator;
 
         private readonly List<Item> _healPotions = new List<Item>();
         
-        public HealPotionsPresenter(IInventoryModelProvider inventoryModelProvider, IActiveItemsInputListener activeItemsInputListener, HealPotionsView healPotionsView) : base(ItemType.Potion, inventoryModelProvider)
+        public HealPotionsPresenter(IInventoryModelProvider inventoryModelProvider, IActiveItemsInputListener activeItemsInputListener, HealPotionsView healPotionsView, EffectApplicator effectApplicator) : base(ItemType.Potion, inventoryModelProvider)
         {
             _activeItemsInputListener = activeItemsInputListener;
             _healPotionsView = healPotionsView;
-            
+            _effectApplicator = effectApplicator;
+
+            _healPotionsView.OnClicked += OnHealActivateActionPerformedFromUI;
             _activeItemsInputListener.OnHealActivateActionPerformed += OnHealActivateActionPerformed;
             UpdatePotionsCount();
         }
@@ -40,7 +42,12 @@ namespace Content.Features.ItemEffectsModule.Scripts
             if(_healPotions.Count == 0)
                 return;
             
-            _inventoryModel.RemoveItem(_healPotions[0]);
+            var item = _healPotions[0];
+            _effectApplicator.ApplyEffectOfType(item.EffectType, out bool consumeItem);
+            if (consumeItem)
+            {
+                _inventoryModel.RemoveItem(item);
+            }
         }
 
         private void UpdatePotionsCount()
@@ -53,10 +60,16 @@ namespace Content.Features.ItemEffectsModule.Scripts
             UsePotion();
         }
         
+        private void OnHealActivateActionPerformedFromUI(int _)
+        {
+            UsePotion();
+        }
+        
         public override void Dispose()
         {
             base.Dispose();
             _activeItemsInputListener.OnHealActivateActionPerformed -= OnHealActivateActionPerformed;
+            _healPotionsView.OnClicked -= OnHealActivateActionPerformedFromUI;
         }
     }
 }
