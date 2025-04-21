@@ -35,6 +35,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb6636cbf74923b4f9c982da96f85406
+    m_Address: SellBlackListItemsConfiguration_Default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c7ae26acc17ab124d9ca467966c6a6d9
     m_Address: EntitiesConfiguration_Default
     m_ReadOnly: 0

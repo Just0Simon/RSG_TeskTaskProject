@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93a4afc1b399eb745b288cd58dd116d4
+    m_Address: PotionShopInteractable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a99ceda7c8d84d6488cb6a2848b4cb37
     m_Address: ActiveItemsView
     m_ReadOnly: 0

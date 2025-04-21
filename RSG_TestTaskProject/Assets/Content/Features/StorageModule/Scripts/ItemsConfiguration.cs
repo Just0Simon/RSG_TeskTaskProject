@@ -18,5 +18,10 @@ namespace Content.Features.StorageModule.Scripts {
         {
             return _configurations.First(x => x.Name == itemName).ItemType;
         }
+
+        public bool ContainsConfigurationOfType(ItemType itemType)
+        {
+            return _configurations.Any(x => x.ItemType == itemType);
+        }
     }
 }

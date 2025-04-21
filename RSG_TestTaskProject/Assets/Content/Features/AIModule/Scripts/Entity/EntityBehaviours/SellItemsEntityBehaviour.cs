@@ -47,8 +47,7 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
 
         private void SellItems()
         {
-            var itemsToSell = _entityContext.Storage.GetAllItems().Where(x => _trader.BlackListItemTypes.Contains(x.ItemType) is false).ToList();
-            int soldItemsTotalCost = _trader.SellItemsFromStorage(itemsToSell, _entityContext.Storage);
+            int soldItemsTotalCost = _trader.SellAllItems(_entityContext.Storage);
             if (soldItemsTotalCost > 0)
             {
                 _playerBalanceService.Add(soldItemsTotalCost);

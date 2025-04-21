@@ -9,6 +9,7 @@ using Content.Features.LootModule.Scripts;
 using Content.Features.PlayerBalanceModule.Scripts;
 using Content.Features.PlayerData.Scripts;
 using Content.Features.PrefabSpawner;
+using Content.Features.ShopModule.Scripts;
 using Content.Global.Scripts.UI;
 using UnityEngine;
 using Zenject;
@@ -30,6 +31,7 @@ namespace Content.Features.GameBootstrapModule.Scripts.ProjectDI {
             HealthModuleInstaller.Install(Container);
             PlayerBalanceModuleInstaller.Install(Container);
             ItemEffectsModuleInstaller.Install(Container);
+            ShopModuleInstaller.Install(Container);
         }
     }
 }
