@@ -16,10 +16,6 @@ PrefabInstance:
       propertyPath: _entityAnimator
       value: 
       objectReference: {fileID: 1094867714571588053}
-    - target: {fileID: 2662047571111117678, guid: f153eb3a5790de4468a7fdca9b6052a7, type: 3}
-      propertyPath: _attackInteractable
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2845763927123766688, guid: f153eb3a5790de4468a7fdca9b6052a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
