@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Content.Features.InventoryModule.Scripts;
 using Content.Features.ItemEffectsModule.Scripts.Input;
 using Content.Features.StorageModule.Scripts;
@@ -8,14 +9,13 @@ namespace Content.Features.ItemEffectsModule.Scripts
 {
     public class HealPotionsPresenter : ConcreteItemTypePresenter, IDisposable
     {
-        private readonly IInventoryModel _inventoryModel;
         private readonly IActiveItemsInputListener _activeItemsInputListener;
         private readonly HealPotionsView _healPotionsView;
 
         private readonly List<Item> _healPotions = new List<Item>();
         
         public HealPotionsPresenter(IInventoryModelProvider inventoryModelProvider, IActiveItemsInputListener activeItemsInputListener, HealPotionsView healPotionsView) : base(ItemType.Potion, inventoryModelProvider)
-        {;
+        {
             _activeItemsInputListener = activeItemsInputListener;
             _healPotionsView = healPotionsView;
             

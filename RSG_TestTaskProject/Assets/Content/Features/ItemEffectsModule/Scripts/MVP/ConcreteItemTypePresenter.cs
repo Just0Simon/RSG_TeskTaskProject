@@ -8,7 +8,7 @@ namespace Content.Features.ItemEffectsModule.Scripts
     public abstract class ConcreteItemTypePresenter : IDisposable
     {
         private readonly ItemType _concreteItemType;
-        private readonly IInventoryModel _inventoryModel;
+        protected readonly IInventoryModel _inventoryModel;
 
         private int _healPotionsCount;
         
