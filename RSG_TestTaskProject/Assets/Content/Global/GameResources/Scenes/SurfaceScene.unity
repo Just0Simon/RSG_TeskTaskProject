@@ -949,10 +949,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PotionShopInteractable
       objectReference: {fileID: 0}
-    - target: {fileID: 7114994038354761136, guid: 93a4afc1b399eb745b288cd58dd116d4, type: 3}
-      propertyPath: _itemToBuy
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8817523765053877434, guid: 93a4afc1b399eb745b288cd58dd116d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.51
