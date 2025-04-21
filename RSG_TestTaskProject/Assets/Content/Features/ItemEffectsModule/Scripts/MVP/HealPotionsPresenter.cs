@@ -14,9 +14,8 @@ namespace Content.Features.ItemEffectsModule.Scripts
 
         private readonly List<Item> _healPotions = new List<Item>();
         
-        public HealPotionsPresenter(IInventoryModel inventoryModel, IActiveItemsInputListener activeItemsInputListener, HealPotionsView healPotionsView) : base(ItemType.Potion, inventoryModel)
-        {
-            _inventoryModel = inventoryModel;
+        public HealPotionsPresenter(IInventoryModelProvider inventoryModelProvider, IActiveItemsInputListener activeItemsInputListener, HealPotionsView healPotionsView) : base(ItemType.Potion, inventoryModelProvider)
+        {;
             _activeItemsInputListener = activeItemsInputListener;
             _healPotionsView = healPotionsView;
             

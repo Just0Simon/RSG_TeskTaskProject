@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Content.Features.AIModule.Scripts.Entity;
 using Content.Features.InventoryModule.Scripts;
 using Content.Features.ItemEffectsModule.Scripts.Input;
 using Content.Features.StorageModule.Scripts;
@@ -19,9 +20,9 @@ namespace Content.Features.ItemEffectsModule.Scripts
 
         private readonly Dictionary<int, Item> _activeItemsMap = new Dictionary<int, Item>();
         
-        public ActiveItemsPresenter(IInventoryModel inventoryModel, IActiveItemsView activeItemsView, IActiveItemsInputListener activeItemsInputListener, EffectApplicator effectApplicator)
+        public ActiveItemsPresenter(IInventoryModelProvider inventoryModelProvider, IActiveItemsView activeItemsView, IActiveItemsInputListener activeItemsInputListener, EffectApplicator effectApplicator)
         {
-            _inventoryModel = inventoryModel;
+            _inventoryModel = inventoryModelProvider.GetModelForEntity(EntityType.Player);
             _activeItemsView = activeItemsView;
             _activeItemsInputListener = activeItemsInputListener;
             _effectApplicator = effectApplicator;

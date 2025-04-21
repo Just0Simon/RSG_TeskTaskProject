@@ -9,9 +9,6 @@ namespace Content.Features.ItemEffectsModule.Scripts
         public event Action<int> OnActiveItemClicked; 
         
         private Dictionary<int, ActiveItemView> _activeItemsViews = new Dictionary<int, ActiveItemView>();
-
-        [SerializeField]
-        private ActiveItemView _potionActiveItemView;
         
         [SerializeField]
         private ActiveItemView _activeItemViewPrefab;

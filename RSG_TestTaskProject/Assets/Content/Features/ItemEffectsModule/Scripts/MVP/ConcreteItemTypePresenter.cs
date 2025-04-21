@@ -1,4 +1,5 @@
 ﻿using System;
+using Content.Features.AIModule.Scripts.Entity;
 using Content.Features.InventoryModule.Scripts;
 using Content.Features.StorageModule.Scripts;
 
@@ -11,10 +12,10 @@ namespace Content.Features.ItemEffectsModule.Scripts
 
         private int _healPotionsCount;
         
-        public ConcreteItemTypePresenter(ItemType concreteItemType, IInventoryModel inventoryModel)
+        public ConcreteItemTypePresenter(ItemType concreteItemType, IInventoryModelProvider inventoryModelProvider)
         {
             _concreteItemType = concreteItemType;
-            _inventoryModel = inventoryModel;
+            _inventoryModel = inventoryModelProvider.GetModelForEntity(EntityType.Player);
             
             _inventoryModel.ItemAdded += OnItemAdded;
             _inventoryModel.ItemRemoved += OnItemRemoved;
