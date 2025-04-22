@@ -7,6 +7,9 @@ namespace Content.Features.StorageModule.Scripts {
         public event Action<Item> OnItemRemoved;
         public List<Item> GetAllItems();
     
+        public bool CanAddItem(Item item);
+        public bool CanAddItems(List<Item> items);
+        
         public void AddItem(Item item);
         public void AddItems(List<Item> items);
 

@@ -228,6 +228,14 @@ PrefabInstance:
       value: GlobalScene
       objectReference: {fileID: 0}
     - target: {fileID: 7877576881433532857, guid: 2b9345f28c2b956498f42997199a98ee, type: 3}
+      propertyPath: '_monoInstallers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877576881433532857, guid: 2b9345f28c2b956498f42997199a98ee, type: 3}
+      propertyPath: '_monoInstallers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7877576881433532857, guid: 2b9345f28c2b956498f42997199a98ee, type: 3}
       propertyPath: _parentContractNames.Array.size
       value: 0
       objectReference: {fileID: 0}

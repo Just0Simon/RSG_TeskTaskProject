@@ -89,7 +89,7 @@ PrefabInstance:
       addedObject: {fileID: 2641000551147064241}
     - targetCorrespondingSourceObject: {fileID: 8985726670769606566, guid: f153eb3a5790de4468a7fdca9b6052a7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2104324160888522534}
+      addedObject: {fileID: 5052822221685412711}
   m_SourcePrefab: {fileID: 100100000, guid: f153eb3a5790de4468a7fdca9b6052a7, type: 3}
 --- !u!114 &1094867714571588053 stripped
 MonoBehaviour:
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa49ffe25d54e8e830b304c8bd800e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lootSpawner: {fileID: 2104324160888522534}
---- !u!114 &2104324160888522534
+  _lootSpawner: {fileID: 5052822221685412711}
+--- !u!114 &5052822221685412711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,9 +129,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1294440353413939748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0c9780d19484d8b91033ff8f43779b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 527161e8fc8b4218a416510197aad272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _lootToSpawn:
-  - {fileID: 8363719149243772793, guid: 8fcc8ae95cbe7d547ba9e5ad187be870, type: 3}
-  - {fileID: 8238402195873183356, guid: 5afb6a1742ca3f241ae220c184c97080, type: 3}
+  - Loot: {fileID: 8363719149243772793, guid: 8fcc8ae95cbe7d547ba9e5ad187be870, type: 3}
+    Chance: 0.8
+  - Loot: {fileID: 8238402195873183356, guid: 5afb6a1742ca3f241ae220c184c97080, type: 3}
+    Chance: 0.6

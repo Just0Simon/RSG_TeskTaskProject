@@ -37,6 +37,24 @@ namespace Core.InputModule.Generated
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Numbers"",
+                    ""type"": ""Button"",
+                    ""id"": ""b91244c2-edbc-4040-bcf4-f8fcd61d34f3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""18116a9f-ff83-4c1d-9b03-e80d4382b14a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +66,116 @@ namespace Core.InputModule.Generated
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c0b7d2d-bf74-45e0-94b5-a1817ff426ac"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c327ef1-a6ca-43c7-9bf4-86d9dbe2599c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""960e371e-a727-4498-8d56-0789f293ede5"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e06c90e-b988-43c7-baa1-d925614a2ec6"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=4)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5802345c-83e5-4d39-a0e0-e5f5eb875389"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=5)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcca9c16-4b6c-4533-9b1f-770cfce629dd"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=6)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d089ee73-bbcf-4cf4-af94-db6eb1ee11fe"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=7)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27d8d1a2-921f-44d5-a229-e999659f9b9c"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=8)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f174529-001b-41ee-97da-b2193f146b02"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=9)"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Numbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f281619d-1b43-47a0-a2a4-578a745ae242"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -636,6 +764,8 @@ namespace Core.InputModule.Generated
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
+            m_Player_Numbers = m_Player.FindAction("Numbers", throwIfNotFound: true);
+            m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -716,11 +846,15 @@ namespace Core.InputModule.Generated
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Interaction;
+        private readonly InputAction m_Player_Numbers;
+        private readonly InputAction m_Player_Heal;
         public struct PlayerActions
         {
             private @DefaultInputActions m_Wrapper;
             public PlayerActions(@DefaultInputActions wrapper) { m_Wrapper = wrapper; }
             public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+            public InputAction @Numbers => m_Wrapper.m_Player_Numbers;
+            public InputAction @Heal => m_Wrapper.m_Player_Heal;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -733,6 +867,12 @@ namespace Core.InputModule.Generated
                 @Interaction.started += instance.OnInteraction;
                 @Interaction.performed += instance.OnInteraction;
                 @Interaction.canceled += instance.OnInteraction;
+                @Numbers.started += instance.OnNumbers;
+                @Numbers.performed += instance.OnNumbers;
+                @Numbers.canceled += instance.OnNumbers;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -740,6 +880,12 @@ namespace Core.InputModule.Generated
                 @Interaction.started -= instance.OnInteraction;
                 @Interaction.performed -= instance.OnInteraction;
                 @Interaction.canceled -= instance.OnInteraction;
+                @Numbers.started -= instance.OnNumbers;
+                @Numbers.performed -= instance.OnNumbers;
+                @Numbers.canceled -= instance.OnNumbers;
+                @Heal.started -= instance.OnHeal;
+                @Heal.performed -= instance.OnHeal;
+                @Heal.canceled -= instance.OnHeal;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -923,6 +1069,8 @@ namespace Core.InputModule.Generated
         public interface IPlayerActions
         {
             void OnInteraction(InputAction.CallbackContext context);
+            void OnNumbers(InputAction.CallbackContext context);
+            void OnHeal(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

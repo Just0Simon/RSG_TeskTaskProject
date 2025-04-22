@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Content.Features.AIModule.Scripts.Entity {
     public class SpawnLootOnDeath : MonoBehaviour {
-        [SerializeField] private LootSpawner _lootSpawner;
+        [SerializeField] private AbstractMonoLootSpawner _lootSpawner;
         private IDamageable _damageable;
 
         private void Start() {

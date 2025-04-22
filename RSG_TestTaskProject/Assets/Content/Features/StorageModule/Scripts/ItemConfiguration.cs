@@ -1,6 +1,6 @@
 ﻿using System;
+using Content.Features.ItemEffectsModule.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Content.Features.StorageModule.Scripts {
     [Serializable]
@@ -8,6 +8,9 @@ namespace Content.Features.StorageModule.Scripts {
         public ItemType ItemType;
         public string Name;
         public Sprite Icon;
-        public int Price;
+        public int SellPrice;
+        public int BuyPrice;
+        public float Weight;
+        public EffectType EffectType;
     }
 }

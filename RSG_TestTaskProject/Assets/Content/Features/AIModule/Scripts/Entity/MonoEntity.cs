@@ -1,5 +1,6 @@
 ﻿using Content.Features.AIModule.Scripts.Entity.EntityBehaviours;
 using Content.Features.DamageablesModule.Scripts;
+using Content.Features.HealthModule.Scripts;
 using Content.Features.StorageModule.Scripts;
 using UnityEngine;
 using Zenject;
@@ -12,13 +13,15 @@ namespace Content.Features.AIModule.Scripts.Entity {
         
         private IEntityBehaviour _currentBehaviour;
         private IEntityDataService _entityDataService;
-        private IStorageFactory _storageFactory;
+        private IEntityStorageFactory _entityStorageFactory;
         private IEntityBehaviourFactory _entityBehaviourFactory;
+        private IEntityHealthModelProvider _healthModelProvider;
 
         [Inject]
-        public void InjectDependencies(IEntityDataService entityDataService, IStorageFactory storageFactory, IEntityBehaviourFactory entityBehaviourFactory) {
+        public void InjectDependencies(IEntityDataService entityDataService, IEntityStorageFactory entityStorageFactory, IEntityBehaviourFactory entityBehaviourFactory, IEntityHealthModelProvider healthModelProvider) {
+            _healthModelProvider = healthModelProvider;
             _entityBehaviourFactory = entityBehaviourFactory;
-            _storageFactory = storageFactory;
+            _entityStorageFactory = entityStorageFactory;
             _entityDataService = entityDataService;
         }
 
@@ -26,8 +29,8 @@ namespace Content.Features.AIModule.Scripts.Entity {
             _entityContext.Entity = this;
             _entityContext.EntityDamageable = GetComponent<IDamageable>();
             _entityContext.EntityData = _entityDataService.GetEntityData(_entityType);
-            _entityContext.EntityDamageable.SetHealth(_entityContext.EntityData.StartHealth);
-            _entityContext.Storage = _storageFactory.GetStorage();
+            _entityContext.EntityDamageable.BindHealthModel(_healthModelProvider.ProvideHealthForEntityType(_entityType));
+            _entityContext.Storage = _entityStorageFactory.GetStorage(_entityType);
             
             SetDefaultBehaviour();
         }

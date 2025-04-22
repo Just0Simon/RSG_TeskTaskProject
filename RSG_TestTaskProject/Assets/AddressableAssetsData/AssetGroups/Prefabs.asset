@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_GUID: a002e2762f457b6429e0da2b7b348364
   m_SerializeEntries:
+  - m_GUID: 485d426b0b1f34b4497307d34b523111
+    m_Address: HealthBarView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 529b5a1dd4f30a448bd40065e6f17ac7
+    m_Address: Assets/Content/Features/PlayerBalanceModule/GameResources/Prefabs/PlayerBalanceView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 572e3e85a587c984fbd838af01028e49
     m_Address: Player
     m_ReadOnly: 0
@@ -22,6 +32,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5afb6a1742ca3f241ae220c184c97080
     m_Address: Potion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a7c85dd8ccd2c4438358f368e700609
+    m_Address: HealPotionsView
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -35,8 +50,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90662ff333b2774438bf43e679fd9541
+    m_Address: InventoryView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93a4afc1b399eb745b288cd58dd116d4
+    m_Address: PotionShopInteractable
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a99ceda7c8d84d6488cb6a2848b4cb37
+    m_Address: ActiveItemsView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d2116e2d8ec6e3f4fada49c9b418c674
     m_Address: PlayerCamera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec740cca1380b604593506078584f34c
+    m_Address: EventSystem
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

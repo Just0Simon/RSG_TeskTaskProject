@@ -1,13 +1,23 @@
 ﻿using System;
+using System.Linq;
+using Content.Features.PlayerBalanceModule.Scripts;
 using Content.Features.ShopModule.Scripts;
+using Content.Features.StorageModule.Scripts;
 using UnityEngine;
 
 namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
     public class SellItemsEntityBehaviour : IEntityBehaviour {
         private EntityContext _entityContext;
         private Trader _trader;
+        private IPlayerBalanceService _playerBalanceService;
         
         public event Action OnBehaviorEnd;
+
+        public SellItemsEntityBehaviour(IPlayerBalanceService playerBalanceService)
+        {
+            _playerBalanceService = playerBalanceService;
+        }
+        
         public void InitContext(EntityContext entityContext) =>
             _entityContext = entityContext;
         
@@ -35,8 +45,14 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
         private bool IsNearTheTarget() =>
             Vector3.Distance(_entityContext.EntityDamageable.Position, _trader.transform.position) <= _entityContext.EntityData.InteractDistance;
 
-        private void SellItems() {
-            _trader.SellAllItemsFromStorage(_entityContext.Storage);
+        private void SellItems()
+        {
+            int soldItemsTotalCost = _trader.SellAllItems(_entityContext.Storage);
+            if (soldItemsTotalCost > 0)
+            {
+                _playerBalanceService.Add(soldItemsTotalCost);
+            }
+            
             StopMoving();
             OnBehaviorEnd?.Invoke();
         }

@@ -15,8 +15,28 @@ MonoBehaviour:
   m_GroupName: Configurations
   m_GUID: 0ef284813199e1c4fb1dc2a763393a34
   m_SerializeEntries:
+  - m_GUID: 5a246e6b306d17a48ae9bfc3f2010483
+    m_Address: Assets/Content/Features/ItemEffectsModule/GameResources/ActiveItemsConfiguration_Default.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a959e323afe4f0b40a6145127175905c
     m_Address: InteractConfiguration
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad0a7eaafeb418243a23f5f24d8c11d7
+    m_Address: EffectsConfigurationsCollection_Default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0341191de07c5a409ffcfdc1171931f
+    m_Address: WeightStorageConfiguration_Default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb6636cbf74923b4f9c982da96f85406
+    m_Address: SellBlackListItemsConfiguration_Default
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

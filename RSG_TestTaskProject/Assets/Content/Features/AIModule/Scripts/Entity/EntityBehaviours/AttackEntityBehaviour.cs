@@ -21,7 +21,7 @@ namespace Content.Features.AIModule.Scripts.Entity.EntityBehaviours {
         }
 
         public void Process() {
-            if(_targetDamageable.IsActive is false) {
+            if(_targetDamageable.IsActive is false || _targetDamageable.DamageableType == _entityContext.EntityDamageable.DamageableType) {
                 OnBehaviorEnd?.Invoke();
                 return;
             }
